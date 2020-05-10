@@ -1,3 +1,5 @@
+<%@page import="com.demo.Users"%>
+
 <!DOCTYPE html>
 <!--suppress ALL -->
 <html>
@@ -10,6 +12,13 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+<%!
+    private String[] languages = new String[]{"Java", "HTML", "CSS", "JavaScript"};
+%>
+<jsp:useBean id="users" class="com.demo.Users"></jsp:useBean>
+<jsp:setProperty name="users" property="nameB" value='<%= request.getParameter("name") %>'/>
+<jsp:setProperty name="users" property="emailB" value='<%= request.getParameter("email") %>'/>
+<jsp:setProperty name="users" property="languages" value='<%= request.getParameter("languages") %>'/>
 
 <div class="container-fluid">
     <div class="row">
@@ -28,7 +37,7 @@
             <div class="col-xl-8 col-md-6 col-sm-12 col-xs-12" style="padding-top: 40px;">
                 <h2 id="head">Profile information</h2>
                 <p id="p1">
-                    Name: Iva Nakova
+                    Name: <jsp:getProperty name="users" property="nameB"/>
                 </p>
                 <p id="p1">
                     Student
@@ -48,7 +57,7 @@
                 <h3 id="head2">
                     Languages
                 </h3>
-                <p id="p2">Java</p>
+                <p id="p2">  <% System.out.println(languages[0]);%>   </p>
                 <div class="progress md-progress" id="progress">
                     <div class="progress-bar" role="progressbar" style="width: 25%; height: 4px;padding-left: 50px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
@@ -91,7 +100,7 @@
         <div class="row" style="background-color: white;border-radius: 10px;">
             <div class="col-md-6 col-sm-6 col-xl-6 col-xs-12">
                 <p id="labels" style="padding-top: 20px;">Email</p>
-                <p id="value" style="text-decoration: underline;">iva@tu-varna.bg</p>
+                <p id="value" style="text-decoration: underline;"> <jsp:getProperty name="users" property="emailB"/> </p>
                 <p id="labels">Mobile</p>
                 <p id="value" style="margin-bottom: 20px;">09876543219</p>
             </div>
