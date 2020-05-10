@@ -1,5 +1,6 @@
 <%@page import="com.demo.Users"%>
 
+
 <!DOCTYPE html>
 <!--suppress ALL -->
 <html>
@@ -12,13 +13,10 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-<%!
-    private String[] languages = new String[]{"Java", "HTML", "CSS", "JavaScript"};
-%>
+
 <jsp:useBean id="users" class="com.demo.Users"></jsp:useBean>
 <jsp:setProperty name="users" property="nameB" value='<%= request.getParameter("name") %>'/>
 <jsp:setProperty name="users" property="emailB" value='<%= request.getParameter("email") %>'/>
-<jsp:setProperty name="users" property="languages" value='<%= request.getParameter("languages") %>'/>
 
 <div class="container-fluid">
     <div class="row">
@@ -45,6 +43,10 @@
                 <p id="p1">
                     Description:
                 </p>
+                <form action="EditProfilePage.jsp" id="labels">
+                    <button name="Edit" value="Edit">Edit</button>
+                </form>
+
             </div>
         </div>
         <div class="row">
@@ -57,7 +59,7 @@
                 <h3 id="head2">
                     Languages
                 </h3>
-                <p id="p2">  <% System.out.println(languages[0]);%>   </p>
+                <p id="p2" style="padding-top: 10px;">  JAVA  </p>
                 <div class="progress md-progress" id="progress">
                     <div class="progress-bar" role="progressbar" style="width: 25%; height: 4px;padding-left: 50px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>

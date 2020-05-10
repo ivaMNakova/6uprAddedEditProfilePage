@@ -3,6 +3,8 @@ import java.io.Serializable;
 
 public class Users implements Serializable {
 
+
+
     private int user_id;
     private String emailB;
     private String passwordB;
